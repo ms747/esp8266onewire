@@ -5,8 +5,8 @@
 
 #define ONE_WIRE_BUS            D4      
 
-char ssid[] = "m2mk";
-char password[]  = "@star1234@";
+char ssid[] = "@@@@@";
+char password[]  = "@@@@@";
 WiFiClient  client;
 
 unsigned long myChannelNumber = 89003;
