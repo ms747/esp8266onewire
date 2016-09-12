@@ -37,5 +37,4 @@ void loop() {
   float f = DS18B20.getTempCByIndex(0);
   ThingSpeak.writeField(myChannelNumber, 2, f,myWriteAPIKey);
   delay(20000);
-  
 }
