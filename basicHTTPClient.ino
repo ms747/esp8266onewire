@@ -1,3 +1,4 @@
+#include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
 #include <String.h>
 // Timeout
@@ -9,11 +10,7 @@ const char* pass = "@star1234@";
 
 // Host and Path
 const char* host = "api.twitch.tv";
-const char* path = "/kraken/channels/arteezy";
-
-
-
-
+const char* path = "/kraken/channels/admiralbulldog";
 
 void setup() {
   // Initialize Serial
@@ -46,14 +43,10 @@ void setup() {
 
   // Wait
   delay(100);
-  
-
-   
-
 }
 
 void loop() {
-  // WiFi client use WiFiClientSecure for SSL with PORT = 443
+  // WiFi client( USE WiFiClientSecure for SSL with PORT = 443)
   WiFiClientSecure client;
 
   // Port
@@ -86,24 +79,25 @@ void loop() {
   // Read The Response 
   while(client.available())
   {
-    String line = client.readString();
-    Serial.println(line.substring(line.lastIndexOf('\r')));
+    String line = client.readString(); 
+    String json = line.substring(line.lastIndexOf('\r'));
+    Serial.println(json);
+    StaticJsonBuffer<200> jsonBuffer;
+    JsonObject& root = jsonBuffer.parseObject(json);
+
+    String n1 = root["error"];
+    String n2 = root["mature"];
+    String n3 = root["status"];
+    String n4 = root["message"];
+    
+    
+    Serial.println(n1);
+    Serial.println(n2);
+    Serial.println(n3);
+    Serial.println(n4);
   }
   
   // Delay 10 sec
   delay(10000);
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
