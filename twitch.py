@@ -6,7 +6,8 @@ import sys
 
 #user = input("Twitch user : ")
 user = str(sys.argv[1])
-client = "4u0hc5wbl14ppu8620x75j95mc2chjs"
+#d -> s
+client = "4u0hc5wbl14ppu8620x75j95mc2chjd"
 url = "https://api.twitch.tv/kraken/streams/" + user + "?client_id=" + client
 
 
